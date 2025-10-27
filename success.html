@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mengirim ke Admin Jasuke...</title>
+<style>
+  body {
+    background: #1a1a1a;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+  }
+  .box {
+    padding: 40px 50px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255,136,0,0.4);
+    animation: fadeIn 0.8s ease;
+  }
+  h2 {
+    color: #ffcc33;
+    margin-bottom: 15px;
+  }
+  p {
+    color: #ddd;
+    margin-bottom: 25px;
+  }
+  a {
+    display: inline-block;
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #ffcc33, #ff8800);
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ffcc33;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <h2>⏳ Mengirim Pesanan Anda...</h2>
+    <p>Mohon tunggu, Anda akan diarahkan ke WhatsApp admin.</p>
+    <a id="manualLink" href="#" target="_blank">👉 Klik di sini jika tidak otomatis</a>
+  </div>
+
+ <script>
+  const adminNumber = "6282150355735"; // Nomor WhatsApp admin (pakai format internasional)
+  const data = JSON.parse(localStorage.getItem('jasukeOrder'));
+
+  if (data) {
+    const text = encodeURIComponent(
+      `Halo Admin Jasuke 👋\n\nSaya ingin pesan Jasuke Rp5.000:\n` +
+      `👤 Nama: ${data.nama}\n🏠 Alamat: ${data.alamat}\n📞 No HP: ${data.nohp}\n🧀 Request: ${data.request}`
+    );
+
+    // ✅ Link yang benar
+    const waLink = `https://wa.me/${adminNumber}?text=${text}`;
+
+    document.getElementById("manualLink").href = waLink;
+
+    // Redirect otomatis ke WhatsApp setelah 2 detik
+    setTimeout(() => {
+      window.location.href = waLink;
+      localStorage.removeItem('jasukeOrder');
+    }, 2000);
+  } else {
+    document.body.innerHTML = "<h2>⚠️ Tidak ada data pesanan ditemukan!</h2>";
+  }
+</script>
+
+</body>
+</html>

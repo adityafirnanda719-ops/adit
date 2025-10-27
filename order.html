@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pesan Jasuke</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffcc33 0%, #ff8800 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  form {
+    background: white;
+    color: #333;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 420px;
+    animation: slideUp 0.8s ease;
+  }
+  h2 {
+    text-align: center;
+    color: #ff8800;
+  }
+  label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #eee;
+    margin-top: 5px;
+    font-size: 15px;
+  }
+  textarea {resize: none; height: 80px;}
+  button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: linear-gradient(90deg, #ffcc33, #ff8800);
+    border: none;
+    border-radius: 30px;
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ffcc33;
+  }
+  @keyframes slideUp {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+</style>
+</head>
+<body>
+<form id="orderForm">
+  <h2>Form Pemesanan Jasuke</h2>
+  <label>Nama Lengkap</label>
+  <input type="text" id="nama" required>
+
+  <label>Alamat</label>
+  <input type="text" id="alamat" required>
+
+  <label>No HP / WhatsApp</label>
+  <input type="text" id="nohp" required>
+
+  <label>Request Tambahan</label>
+  <textarea id="request" placeholder="Contoh: Tambah keju, tanpa gula..." required></textarea>
+
+  <button type="submit">Kirim Pesanan</button>
+</form>
+
+<script>
+document.getElementById('orderForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const data = {
+    nama: document.getElementById('nama').value,
+    alamat: document.getElementById('alamat').value,
+    nohp: document.getElementById('nohp').value,
+    request: document.getElementById('request').value
+  };
+  localStorage.setItem('jasukeOrder', JSON.stringify(data));
+  window.location.href = 'success.html';
+});
+</script>
+</body>
+</html>

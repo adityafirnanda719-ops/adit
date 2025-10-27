@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jasuke Lezat - Rp5.000</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #ffcc33, #ff8800, #1a1a1a);
+      color: white;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      color: #ffcc33;
+      margin: 15px 0;
+    }
+
+    img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 0 15px rgba(255, 204, 51, 0.7);
+      animation: zoomIn 1s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    a {
+      display: inline-block;
+      padding: 12px 30px;
+      background: linear-gradient(90deg, #ffcc33, #ff8800);
+      border-radius: 30px;
+      color: #1a1a1a;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ffcc33;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🌽 Jasuke Lezat 🌽</h1>
+    <img src="jasuke.jpg" alt="Foto Jasuke">
+    <p class="price">💰 Hanya Rp5.000</p>
+    <a href="order.html">Pesan Sekarang</a>
+  </div>
+</body>
+</html>
